@@ -1,0 +1,21 @@
+# Use an official Node.js runtime as a parent image
+FROM node:20.6.1
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Install development dependencies
+RUN npm install -g @angular/cli
+COPY package*.json ./
+RUN npm install
+
+# Copy the rest of the application source code to the working directory
+COPY . .
+# Expose port 4200 for development
+EXPOSE 4200
+
+# Define environment variable (optional)
+ENV NODE_ENV=development
+
+# Start the Angular development server
+CMD ["ng", "serve", "--host", "0.0.0.0"]

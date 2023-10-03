@@ -1,0 +1,50 @@
+version: '3.9'
+
+networks:
+  potlnet:
+    driver: bridge
+
+services:
+  node:
+    container_name: potl_api
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    networks:
+    - potlnet
+    ports:
+      - "3000:3000"
+    environment:
+      MONGO_URI: mongodb://mongo:27017/POTLdb
+    depends_on:
+      - mongo
+      
+  angular:
+    container_name: potl_client
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    networks:
+    - potlnet
+    ports:
+      - "4200:80"
+
+  mongo:
+    container_name: potl_db
+    image: mongo
+    build: 
+      context: ./database
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./database/data:/data/db
+    networks:
+    - potlnet
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: POTLClient
+      MONGO_INITDB_ROOT_PASSWORD: 2mzG28gHD94rOd0684sx
+
+volumes:
+  mongodb_data: null
+

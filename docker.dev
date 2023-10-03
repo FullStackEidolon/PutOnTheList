@@ -1,0 +1,16 @@
+#!/bin/bash
+
+case $1 in
+    build)
+        docker-compose -f docker-compose.dev.yml build
+        ;;
+    up)
+        docker-compose -f docker-compose.dev.yml up
+        ;;
+    down)
+        docker-compose -f docker-compose.dev.yml down
+        ;;
+    *)
+        echo "Usage: $0 {build|up|down}"
+        exit 1
+esac

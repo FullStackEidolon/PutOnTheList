@@ -1,0 +1,7 @@
+#ignore database files
+database/data/
+
+
+#ignore frontend modules
+frontend/.vscode
+frontend/.angular
