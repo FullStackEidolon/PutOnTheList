@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; // import HttpClientModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DataComponent } from './data/data.component';
+import { NotesListComponent } from './notes-list/notes-list.component';
+import { NotesDetailComponent } from './notes-detail/notes-detail.component';
+import { NoteCreateComponent } from './note-create/note-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataComponent
+    NotesListComponent,
+    NotesDetailComponent,
+    NoteCreateComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule // add HttpClientModule to imports
   ],
   providers: [],
   bootstrap: [AppComponent]

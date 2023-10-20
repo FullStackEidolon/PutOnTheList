@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 
 // Updating the MongoDB URI to use the service name within the Docker network
 const mongoDBUri = 'mongodb://POTLClient:2mzG28gHD94rOd0684sx@mongo:27017/POTLdb?authSource=admin';
-//mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
 
 mongoose.connect(mongoDBUri, {
   useNewUrlParser: true,
@@ -22,6 +21,13 @@ const port = 3000; // Adjust the port as needed
 
 // Configure CORS to allow requests from your Angular app's origin
 app.use(cors());
+
+// Middlewares
+app.use(express.json());
+
+// Routes
+const noteRoutes = require('./routes/noteRoutes');
+app.use(noteRoutes);
 
 // Define your API routes
 app.get('/api/data', (req, res) => {

@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  angular:
+    container_name: potl_client_2
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    networks:
+    - putonthelist_potlnet
+    ports:
+      - "4201:4201"
+
+networks:
+  putonthelist_potlnet:
+    external: true

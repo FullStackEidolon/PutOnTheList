@@ -1,0 +1,10 @@
+<p>notes-list works!</p>
+
+<div *ngFor="let note of notes">
+    <span>{{ note.title }}</span>
+    <button (click)="deleteNote(note.id)">Delete</button>
+    <button (click)="viewNote(note.id)">View</button>
+
+
+</div>
+<button (click)="addNote()">Add New Note</button>

@@ -27,7 +27,7 @@ services:
     networks:
     - potlnet
     ports:
-      - "4200:80"
+      - "4200:4200"
 
   mongo:
     container_name: potl_db
